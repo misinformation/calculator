@@ -1,4 +1,3 @@
-/*
 const display = document.querySelector('.calc .display')
 document.querySelectorAll('.calc .digits button, .calc .opers button')
    .forEach( button => button.addEventListener('click', digitOperPressed));
@@ -8,14 +7,32 @@ function digitOperPressed(event) {
     display.value += btnText;
 }
 
+const allOperands = document.querySelector('.calc .digits button');
+
+const allOperators = document.querySelector('.calc .opers button');
+   
+
 
 // Знак дорівнює
 document.querySelector('.calc .eq')
     .addEventListener('click', eqPressed);
-
 function eqPressed() {
-    display.value = eval(display.value)
+        if (divisionByZero() || divisionByZero()) {
+            return;
+        }
+        display.value = eval(display.value);
+    }
+
+function divisionByZero() {
+    if (display.value.includes("/0")) {
+            alert('Don\'t divide by zero');
+            return true;
+        }
+    return false;    
 }
+
+//function addMore
+
 
 //очистити все
 document.querySelector('.calc .clear-all')
@@ -41,7 +58,7 @@ function addPi() {
      display.value += Math.PI;
 }
 
-*/
+
 
 /*
 document.querySelector('.calc .eq')
@@ -167,34 +184,3 @@ if(right !== 0) {
 }
 }  
 */
-
-
-
-
-
-
-
-
-
-
-document.querySelector('.calc .eq')
-    .addEventListener('click', func1);
-document.querySelector('.calc .eq')
-    .addEventListener('click', func2);
-document.querySelector('.calc .eq')
-    .addEventListener('click', func3);
-document.querySelector('.calc .eq')
-    .addEventListener('click', func4);
-
-function func1() {
-    console.log('func1');
-}
-function func2() {
-    console.log('func1');
-}
-function func3() {
-    console.log('func1');
-}
-function func4() {
-    console.log('func1');
-}
