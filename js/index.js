@@ -1,3 +1,4 @@
+/*
 const display = document.querySelector('.calc .display')
 document.querySelectorAll('.calc .digits button, .calc .opers button')
    .forEach( button => button.addEventListener('click', digitOperPressed));
@@ -8,9 +9,6 @@ function digitOperPressed(event) {
 }
 
 
-
-
-
 // Знак дорівнює
 document.querySelector('.calc .eq')
     .addEventListener('click', eqPressed);
@@ -18,12 +16,6 @@ document.querySelector('.calc .eq')
 function eqPressed() {
     display.value = eval(display.value)
 }
-
-
-// Знак дорівнює натиснути скільки раз стільки остання дія
-
-
-
 
 //очистити все
 document.querySelector('.calc .clear-all')
@@ -33,7 +25,25 @@ function clearDisplay() {
     display.value = '';
 }
 
+//очистити один знак
+document.querySelector('.calc .clear-entry')
+   .addEventListener('click', clearLastEntry);
 
+function clearLastEntry() {
+    display.value = display.value.slice(0, -1);
+}
+
+//число пі
+document.querySelector('.calc .numberPi')
+   .addEventListener('click', addPi);
+
+function addPi() {
+     display.value += Math.PI;
+}
+
+*/
+
+/*
 document.querySelector('.calc .eq')
    .addEventListener('click', twoNullAtTheBegining);
 
@@ -42,16 +52,12 @@ function clearLastEntry() {
     display.value = '';
     }
 }
+*/
 
 
 
-//очистити один знак
-document.querySelector('.calc .clear-entry')
-   .addEventListener('click', clearLastEntry);
 
-function clearLastEntry() {
-    display.value = display.value.slice(0, -1);
-}
+
 
 /* 
 // якщо два знаки операцій підряд
@@ -65,17 +71,6 @@ for (i = 0; i < eq.length; i++) {
 }
 
 */
-
-
-
-//число пі
-document.querySelector('.calc .numberPi')
-   .addEventListener('click', addPi);
-
-function addPi() {
-     display.value += Math.PI;
-}
-
 
 
 //document.querySelector('.calc .opers button');
@@ -171,8 +166,35 @@ if(right !== 0) {
   alert ('Don\'t divide by zero')
 }
 }  
-
-
-
-
 */
+
+
+
+
+
+
+
+
+
+
+document.querySelector('.calc .eq')
+    .addEventListener('click', func1);
+document.querySelector('.calc .eq')
+    .addEventListener('click', func2);
+document.querySelector('.calc .eq')
+    .addEventListener('click', func3);
+document.querySelector('.calc .eq')
+    .addEventListener('click', func4);
+
+function func1() {
+    console.log('func1');
+}
+function func2() {
+    console.log('func1');
+}
+function func3() {
+    console.log('func1');
+}
+function func4() {
+    console.log('func1');
+}
