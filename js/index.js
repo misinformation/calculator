@@ -7,9 +7,6 @@ function digitOperPressed(event) {
     display.value += btnText;
 }
 
-//const allOperands = document.querySelector('.calc .digits button');
-//const allOperators = document.querySelector('.calc .opers button');
-
 const operators = ['-', '+', '*', '/'];
     let lastOperator;
     let dotAlreadyPressed = false;
@@ -47,9 +44,9 @@ const operators = ['-', '+', '*', '/'];
                 alert('Unable to start with point');
                 return;
             }
-            //
+            //неможна ставити крапку після оператора
             if (operators.indexOf(display.value.slice(-1)) !== -1 && btnText === '.') {
-                alert('За точку можна забути так то');
+                alert('No point after operators');
                 return;
             }
             //неможна дві крапки підряд
@@ -102,10 +99,6 @@ function twoNullAtTheBegining() {
 }
 
 
-
-//function addMore
-
-
 //очистити все
 document.querySelector('.calc .clear-all')
    .addEventListener('click', clearDisplay);
@@ -129,125 +122,3 @@ document.querySelector('.calc .numberPi')
 function addPi() {
      display.value += Math.PI;
 }
-
-// кнопка плюс-мінус
-document.querySelector('.calc .plus-minuc')
-   .addEventListener('click', addPlusMinus);
-
-function addPlusMinus() {
-    return display.value = '(-' + (display.value.slice(-1));
-}
-
-
-
-
-
-
-
-
-
-
-/* 
-// якщо два знаки операцій підряд
-function eqPressed() {
-for (i = 0; i < eq.length; i++) {
-  if eq.elements[i].value === + && eq.elements[i+1].value === -
-    
-}
-
-    display.value = eval(display.value);
-}
-
-*/
-
-
-
-
-
-//replace()
-//str = "Please visit Microsoft!";
-//var n = str.replace("Microsoft", "W3Schools");
-/*
-str = "Please visit Microsoft and Microsoft!";
-var n = str.replace(/Microsoft/g, "W3Schools");
-
-*/
-
-//додоти цифри і операції
-//ділити на нуль не можна
-//не можна декілька операцій підряд
-//додати память
-
-
-
-//function doubleClickingOperators
-
-
-
-
-
-
-// не можна ділити на нуль!
-//варіант1
-/*
-//document.querySelector('.calc .eq')
-   // .addEventListener('click', divisionByZero);
-function divisionByZero() {
-     if((display.value[display.value.length-2] === "/") && (display.value[display.value.length-1] === 0)) {
-        alert('Don\'t divide by zero');
-    }
-    clearDisplay ()
-}
-*/
-/*
-function divisionByZero() {
-     if((input[input.length-2] === "/") && (input[input.length-1] === 0)) {
-        alert('Don\'t divide by zero');
-    }
-    clearDisplay ()
-}
-*/
-
-
-//variant 2
-/*
-document.querySelector('.calc .eq')
-    .addEventListener('click', divisionByZero);
-function divisionByZero () {
-    display.value = display.value.slice(-2);
-    if (display.value === '/0')
-    alert ('Don\'t divide by zero');
-    
-    
-}
-
-
-function divisionByZero(display) {
-     if((display.value[display.value.length-2] === "/") && (display.value[display.value.length-1] === 0)) {
-        alert('Don\'t divide by zero');
-    }
-}
-
-function never() {
-if(right !== 0) {
-  return left / right;
-} else {
-  alert ('Don\'t divide by zero')
-}
-}  
-*/
-
-
-
-
-
-
-//document.querySelector('.calc .opers button');
-//    .forEach( button => button.addEventListener('click', digitOperPressed));
-//    function divisionByZero () {
-//      for ( const i=0; i < display.value.length; i++){
-//          const twoNum = display.value[i] + display.value[i+1];
-//          if ( twoNum === '/0') {
-//          alert ('Don\'t divide by zero');
-//      }
-//}  
