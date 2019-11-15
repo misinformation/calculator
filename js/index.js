@@ -17,7 +17,7 @@ const allOperators = document.querySelector('.calc .opers button');
 document.querySelector('.calc .eq')
     .addEventListener('click', eqPressed);
 function eqPressed() {
-        if (divisionByZero() || divisionByZero()) {
+        if (divisionByZero() || twoNullAtTheBegining()) {
             return;
         }
         display.value = eval(display.value);
@@ -27,9 +27,21 @@ function divisionByZero() {
     if (display.value.includes("/0")) {
             alert('Don\'t divide by zero');
             return true;
-        }
+    }
     return false;    
 }
+
+
+
+//два нулі з початку рядка
+function twoNullAtTheBegining() {
+    if (display.value.slice(0, 1) === '00') {
+           return true;
+    }
+    return false;
+}
+
+
 
 //function addMore
 
@@ -58,18 +70,17 @@ function addPi() {
      display.value += Math.PI;
 }
 
+// кнопка плюс-мінус
+document.querySelector('.calc .plus-minuc')
+   .addEventListener('click', addPlusMinus);
 
-
-/*
-document.querySelector('.calc .eq')
-   .addEventListener('click', twoNullAtTheBegining);
-
-function clearLastEntry() {
-    if (display.value.slice(0, 1) === 00) {
-    display.value = '';
-    }
+function addPlusMinus() {
+    return display.value = '(-' + (display.value.slice(-1));
 }
-*/
+
+
+
+
 
 
 
