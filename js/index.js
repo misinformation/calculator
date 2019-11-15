@@ -7,9 +7,69 @@ function digitOperPressed(event) {
     display.value += btnText;
 }
 
-const allOperands = document.querySelector('.calc .digits button');
+//const allOperands = document.querySelector('.calc .digits button');
+//const allOperators = document.querySelector('.calc .opers button');
 
-const allOperators = document.querySelector('.calc .opers button');
+const operators = ['-', '+', '*', '/'];
+    let lastOperator;
+    let dotAlreadyPressed = false;
+
+    function digitOperPressed(event) {
+        const btn = event.target;
+        const btnText = btn.innerText;
+        
+        //операції
+        if (btn.parentElement.className === "opers") {
+            //не починай з оператора
+            if (display.value === '') {
+                alert('Unable to start with operator');
+                return;
+            }
+            //два оператори підряд
+            if (operators.indexOf(display.value.slice(-1)) !== -1) {
+                alert('Two consecutive operators');
+                return;
+            }    
+            //на нуль ділити не можна
+            let someEntries = display.value.split(lastOperator);
+            if (lastOperator === '/' && someEntries[someEntries.length - 1] === '0') {
+                alert('Don\'t divide by zero');
+                return true;
+            }
+            lastOperator = btnText;
+            dotAlreadyPressed = false;
+        }
+
+        //цифри
+        if (btn.parentElement.className === "digits") {
+            //не починай з крапки
+            if (display.value === '' && btnText === '.') {
+                alert('Unable to start with point');
+                return;
+            }
+            //
+            if (operators.indexOf(display.value.slice(-1)) !== -1 && btnText === '.') {
+                alert('За точку можна забути так то');
+                return;
+            }
+            //неможна дві крапки підряд
+            if (btnText === '.') {
+                if (dotAlreadyPressed) {
+                    alert('No numbers with two consecutive points');
+                    return;
+                } else {
+                    dotAlreadyPressed = true;
+                }
+            }
+            //крапка після нуля
+            if (display.value.slice(-1) === '0' && btnText !== '.') {
+                alert('Maybe it should be a dot after zero?');
+                return;
+            }
+        }
+
+        display.value += btnText;
+    }
    
 
 
@@ -101,15 +161,6 @@ for (i = 0; i < eq.length; i++) {
 */
 
 
-//document.querySelector('.calc .opers button');
-//    .forEach( button => button.addEventListener('click', digitOperPressed));
-//    function divisionByZero () {
-//      for ( const i=0; i < display.value.length; i++){
-//          const twoNum = display.value[i] + display.value[i+1];
-//          if ( twoNum === '/0') {
-//          alert ('Don\'t divide by zero');
-//      }
-//}  
 
 
 
@@ -130,6 +181,9 @@ var n = str.replace(/Microsoft/g, "W3Schools");
 
 
 //function doubleClickingOperators
+
+
+
 
 
 
@@ -174,19 +228,6 @@ function divisionByZero(display) {
     }
 }
 
-function hateNull (display) {
-if(right !== 0) {
-  return left / right;
-} else {
-  return "Error!";
-}
-}
-
-
-
-document.querySelector('.calc .digits button .problemNull')
-   .addEventListener('click', never);
-
 function never() {
 if(right !== 0) {
   return left / right;
@@ -195,3 +236,18 @@ if(right !== 0) {
 }
 }  
 */
+
+
+
+
+
+
+//document.querySelector('.calc .opers button');
+//    .forEach( button => button.addEventListener('click', digitOperPressed));
+//    function divisionByZero () {
+//      for ( const i=0; i < display.value.length; i++){
+//          const twoNum = display.value[i] + display.value[i+1];
+//          if ( twoNum === '/0') {
+//          alert ('Don\'t divide by zero');
+//      }
+//}  
